@@ -22,14 +22,51 @@ namespace revivalpmmp\pureentities\entity\monster;
 
 use pocketmine\entity\Entity;
 use pocketmine\entity\Monster;
+use pocketmine\level\Level;
+use pocketmine\nbt\tag\CompoundTag;
 use pocketmine\Server;
+use revivalpmmp\pureentities\features\IntfBaseMob;
+use revivalpmmp\pureentities\features\IntfCanPanic;
+use revivalpmmp\pureentities\traits\BaseMob;
 
-abstract class MonsterX extends Monster{
+abstract class MonsterX extends Monster implements IntfBaseMob{
+
+    use BaseMob;
 
     protected $attackDelay = 0;
     private $minDamage = [0, 0, 0, 0];
     private $maxDamage = [0, 0, 0, 0];
     protected $attackDistance = 2; // distance of blocks when attack can be started
+
+    public function __construct(Level $level, CompoundTag $nbt){
+        parent::__construct($level, $nbt);
+        if(!$this->isFlaggedForDespawn()){
+            $this->namedtag->setByte("generatedByPEX", 1, true);
+            $this->baseInit($this);
+        }
+    }
+
+    public function entityBaseTick(int $tickDiff = 1) : bool{
+        //Timings::$timerEntityBaseTick->startTiming();
+        // check if it needs to despawn
+
+        $hasUpdate = Entity::entityBaseTick($tickDiff);
+
+        // Checking this first because there's no reason to keep going if we know
+        // we're going to despawn the entity.
+        if($this->checkDespawn()){
+            //Timings::$timerEntityBaseTick->stopTiming();
+            return false;
+        }
+
+        // check panic tick
+        if($this instanceof IntfCanPanic){
+            $this->panicTick($tickDiff);
+        }
+
+        //Timings::$timerEntityBaseTick->stopTiming();
+        return $hasUpdate;
+    }
 
     public function attackEntity(Entity $player){
 
