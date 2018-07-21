@@ -287,6 +287,13 @@ trait Tameable{
 		$this->setBaseTarget($player);
 	}
 
+	public function isOwner(Player $player): bool {
+	    if($this->owner instanceof Player){
+            return $this->owner->getUniqueId() === $player->getUniqueId() ? true : false;
+        }
+        return false;
+    }
+
 	/**
 	 * This method has to be called as soon as a owner name is set. It searches online players for the owner name
 	 * and then sets it as owner here
