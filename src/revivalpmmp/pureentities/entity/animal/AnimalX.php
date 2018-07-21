@@ -20,8 +20,44 @@
 namespace revivalpmmp\pureentities\entity\animal;
 
 
-use revivalpmmp\pureentities\entity\BaseEntity;
+use pocketmine\entity\Animal;
+use pocketmine\level\Level;
+use pocketmine\nbt\tag\CompoundTag;
+use revivalpmmp\pureentities\features\IntfBaseMob;
+use revivalpmmp\pureentities\features\IntfCanPanic;
+use revivalpmmp\pureentities\traits\BaseMob;
 
-abstract class AnimalX extends BaseEntity{
+abstract class AnimalX extends Animal implements IntfBaseMob{
 
+    use BaseMob;
+
+    public function __construct(Level $level, CompoundTag $nbt){
+        parent::__construct($level, $nbt);
+        if(!$this->isFlaggedForDespawn()){
+            $this->namedtag->setByte("generatedByPEX", 1, true);
+            $this->baseInit($this);
+        }
+    }
+
+    public function entityBaseTick(int $tickDiff = 1) : bool{
+        //Timings::$timerEntityBaseTick->startTiming();
+        // check if it needs to despawn
+
+        $hasUpdate = parent::entityBaseTick($tickDiff);
+
+        // Checking this first because there's no reason to keep going if we know
+        // we're going to despawn the entity.
+        if($this->checkDespawn()){
+            //Timings::$timerEntityBaseTick->stopTiming();
+            return false;
+        }
+
+        // check panic tick
+        if($this instanceof IntfCanPanic){
+            $this->panicTick($tickDiff);
+        }
+
+        //Timings::$timerEntityBaseTick->stopTiming();
+        return $hasUpdate;
+    }
 }
