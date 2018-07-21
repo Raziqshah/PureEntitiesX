@@ -21,7 +21,10 @@
 namespace revivalpmmp\pureentities\event;
 
 use pocketmine\block\Air;
+use pocketmine\entity\Creature;
 use pocketmine\event\block\BlockPlaceEvent;
+use pocketmine\event\entity\EntityDamageByEntityEvent;
+use pocketmine\event\entity\EntityDamageEvent;
 use pocketmine\event\Listener;
 use pocketmine\event\player\PlayerInteractEvent;
 use pocketmine\event\player\PlayerJoinEvent;
@@ -33,6 +36,7 @@ use pocketmine\math\Vector3;
 use pocketmine\nbt\tag\CompoundTag;
 use pocketmine\network\mcpe\protocol\InventoryTransactionPacket;
 use pocketmine\network\mcpe\protocol\ProtocolInfo;
+use pocketmine\Player;
 use pocketmine\tile\Tile;
 use revivalpmmp\pureentities\data\Color;
 use revivalpmmp\pureentities\data\NBTConst;
@@ -48,6 +52,7 @@ use revivalpmmp\pureentities\features\IntfTameable;
 use revivalpmmp\pureentities\InteractionHelper;
 use revivalpmmp\pureentities\PluginConfiguration;
 use revivalpmmp\pureentities\PureEntities;
+use revivalpmmp\pureentities\task\AlertTamedMobs;
 use revivalpmmp\pureentities\task\delayed\SetTamedOwnerTask;
 use revivalpmmp\pureentities\task\delayed\ShowMobEquipmentTask;
 use revivalpmmp\pureentities\tile\Spawner;
@@ -265,4 +270,16 @@ class EventListener implements Listener{
 			}
 		}
 	}
+
+	public function onEntityDamaged(EntityDamageEvent $event): void {
+	    if($event instanceof EntityDamageByEntityEvent){
+	        $entity = $event->getEntity();
+	        if($entity instanceof Player){
+	            $attacker = $event->getDamager();
+	            if($attacker instanceof Creature){
+                    $this->plugin->getServer()->getAsyncPool()->submitTask(new AlertTamedMobs($entity, $attacker));
+                }
+            }
+        }
+    }
 }
