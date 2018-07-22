@@ -60,6 +60,7 @@ use revivalpmmp\pureentities\entity\BaseEntity;
 use revivalpmmp\pureentities\features\IntfCanEquip;
 use revivalpmmp\pureentities\PluginConfiguration;
 use revivalpmmp\pureentities\PureEntities;
+use revivalpmmp\pureentities\traits\BaseMob;
 use revivalpmmp\pureentities\utils\MobEquipmentConfigHolder;
 use revivalpmmp\pureentities\utils\TickCounter;
 
@@ -106,7 +107,7 @@ class MobEquipment{
 	 */
 	private $pickupTimer = null;
 
-	public function __construct(BaseEntity $entity){
+	public function __construct(BaseMob $entity){
 		$this->entity = $entity;
 		$this->pickupTimer = new TickCounter(PluginConfiguration::getInstance()->getPickupLootTicks());
 	}

@@ -29,6 +29,7 @@ use revivalpmmp\pureentities\entity\BaseEntity;
 use revivalpmmp\pureentities\features\IntfCanBreed;
 use revivalpmmp\pureentities\PluginConfiguration;
 use revivalpmmp\pureentities\PureEntities;
+use revivalpmmp\pureentities\traits\BaseMob;
 use revivalpmmp\pureentities\utils\TickCounter;
 
 /**
@@ -85,7 +86,7 @@ class IdlingComponent{
 	 */
 	private $idleChance = 0;
 
-	public function __construct(BaseEntity $baseEntity){
+	public function __construct(BaseMob $baseEntity){
 		$this->baseEntity = $baseEntity;
 		$pluginConfig = PluginConfiguration::getInstance();
 		$this->idleChance = $pluginConfig->getIdleChance();
