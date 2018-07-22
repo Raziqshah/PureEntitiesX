@@ -58,8 +58,6 @@ trait BaseMob{
      */
     protected $maxJumpHeight = 1.2;
     protected $checkTargetSkipTicks = 1; // default: no skip
-    public $width = 1.0;
-    public $height = 1.0;
     public $speed = 1.0;
 
 
@@ -115,18 +113,6 @@ trait BaseMob{
      */
     public function getMaxJumpHeight() : int{
         return $this->maxJumpHeight;
-    }
-
-    /**
-     * Entity gets attacked by another entity / explosion or something similar
-     *
-     * @param EntityDamageEvent $source the damage event
-     */
-    public function attack(EntityDamageEvent $source) : void{
-
-        if($this->isClosed() || $source->isCancelled() || !($source instanceof EntityDamageByEntityEvent)){
-            return;
-        }
     }
 
     public function knockBack(Entity $attacker, float $damage, float $x, float $z, float $base = 0.4) : void{
