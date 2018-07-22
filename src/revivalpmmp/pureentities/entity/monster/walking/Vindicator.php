@@ -76,7 +76,7 @@ class Vindicator extends WalkingMonster implements IntfCanEquip, IntfCanBreed{
 	}
 
 	public function getName() : string{
-		return "Zombie";
+		return "Vindicator";
 	}
 
 	public function setHealth(float $amount) : void{
