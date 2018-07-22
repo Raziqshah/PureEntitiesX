@@ -43,7 +43,6 @@ trait BaseMob{
     /** @var Vector3|Entity */
     protected $baseTarget = null;
     protected $fireProof = false;
-    protected $friendly = false;
     protected $moveTime = 0;
 
     public $stayTime = 0;
