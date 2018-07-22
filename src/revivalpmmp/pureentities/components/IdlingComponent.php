@@ -26,6 +26,7 @@ use pocketmine\nbt\tag\CompoundTag;
 use pocketmine\Player;
 use revivalpmmp\pureentities\data\NBTConst;
 use revivalpmmp\pureentities\entity\BaseEntity;
+use revivalpmmp\pureentities\features\IntfBaseMob;
 use revivalpmmp\pureentities\features\IntfCanBreed;
 use revivalpmmp\pureentities\PluginConfiguration;
 use revivalpmmp\pureentities\PureEntities;
@@ -86,7 +87,7 @@ class IdlingComponent{
 	 */
 	private $idleChance = 0;
 
-	public function __construct(BaseMob $baseEntity){
+	public function __construct(IntfBaseMob $baseEntity){
 		$this->baseEntity = $baseEntity;
 		$pluginConfig = PluginConfiguration::getInstance();
 		$this->idleChance = $pluginConfig->getIdleChance();

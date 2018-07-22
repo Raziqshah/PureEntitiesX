@@ -57,6 +57,7 @@ use pocketmine\Server;
 use revivalpmmp\pureentities\config\mobequipment\EntityConfig;
 use revivalpmmp\pureentities\data\NBTConst;
 use revivalpmmp\pureentities\entity\BaseEntity;
+use revivalpmmp\pureentities\features\IntfBaseMob;
 use revivalpmmp\pureentities\features\IntfCanEquip;
 use revivalpmmp\pureentities\PluginConfiguration;
 use revivalpmmp\pureentities\PureEntities;
@@ -107,7 +108,7 @@ class MobEquipment{
 	 */
 	private $pickupTimer = null;
 
-	public function __construct(BaseMob $entity){
+	public function __construct(IntfBaseMob $entity){
 		$this->entity = $entity;
 		$this->pickupTimer = new TickCounter(PluginConfiguration::getInstance()->getPickupLootTicks());
 	}
