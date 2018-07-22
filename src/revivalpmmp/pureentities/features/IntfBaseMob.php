@@ -44,13 +44,6 @@ interface IntfBaseMob{
 
     public function getMaxJumpHeight() : int;
 
-    /**
-     * Entity gets attacked by another entity / explosion or something similar
-     *
-     * @param EntityDamageEvent $source the damage event
-     */
-    public function attack(EntityDamageEvent $source) : void;
-
     public function targetOption(Creature $creature, float $distance) : bool;
 
     public function checkTarget(bool $checkSkip = true);
