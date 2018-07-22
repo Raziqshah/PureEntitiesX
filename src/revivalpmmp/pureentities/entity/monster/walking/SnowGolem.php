@@ -103,8 +103,6 @@ class SnowGolem extends WalkingMonster implements ProjectileSource, IntfCanInter
 				$snowball->spawnToAll();
 				$this->level->addSound(new LaunchSound($this), $this->getViewers());
 			}
-
-			$this->checkTamedMobsAttack($player);
 		}
 	}
 

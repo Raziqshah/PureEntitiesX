@@ -273,8 +273,6 @@ class Wolf extends WalkingMonster implements IntfTameable, IntfCanBreed, IntfCan
 			$ev = new EntityDamageByEntityEvent($this, $player, EntityDamageEvent::CAUSE_ENTITY_ATTACK,
 				MobDamageCalculator::calculateFinalDamage($player, $this->getDamage()));
 			$player->attack($ev);
-
-			$this->checkTamedMobsAttack($player);
 		}
 	}
 

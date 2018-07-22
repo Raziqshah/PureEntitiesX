@@ -88,8 +88,6 @@ class Husk extends WalkingMonster implements Ageable{
 			$effect = Effect::getEffect(Effect::HUNGER);
 			$hungerInstance = new EffectInstance($effect, 1800, 1);
 			$effect->applyEffect($player, $hungerInstance);
-
-			$this->checkTamedMobsAttack($player);
 		}
 	}
 

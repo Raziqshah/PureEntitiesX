@@ -92,8 +92,6 @@ class Slime extends WalkingMonster{
 			$ev = new EntityDamageByEntityEvent($this, $player, EntityDamageEvent::CAUSE_ENTITY_ATTACK,
 				MobDamageCalculator::calculateFinalDamage($player, $this->getDamage()));
 			$player->attack($ev);
-
-			$this->checkTamedMobsAttack($player);
 		}
 	}
 

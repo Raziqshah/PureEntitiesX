@@ -68,8 +68,6 @@ class IronGolem extends WalkingMonster{
 				MobDamageCalculator::calculateFinalDamage($player, $this->getDamage()));
 			$player->attack($ev);
 			$player->setMotion(new Vector3(0, 0.7, 0));
-
-			$this->checkTamedMobsAttack($player);
 		}
 	}
 

@@ -63,7 +63,6 @@ class CaveSpider extends WalkingMonster{
 			// TODO: Change Effect details to work with difficulty settings.
 			$poisonInstance->setAmplifier(1);
 			Effect::getEffect(Effect::POISON)->applyEffect($player, $poisonInstance);
-			$this->checkTamedMobsAttack($player);
 		}
 	}
 
