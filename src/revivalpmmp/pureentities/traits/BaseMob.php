@@ -114,10 +114,6 @@ trait BaseMob{
         return $this->maxJumpHeight;
     }
 
-    public function knockBack(Entity $attacker, float $damage, float $x, float $z, float $base = 0.4) : void{
-
-    }
-
     /**
      * This method checks if an entity should despawn - if so, the entity is closed
      * @return bool
