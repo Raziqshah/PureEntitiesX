@@ -54,7 +54,7 @@ class Slime extends WalkingMonster{
 	public function saveNBT() : void{
 		if(PluginConfiguration::getInstance()->getEnableNBT()){
 			parent::saveNBT();
-			$this->namedtag->setByte(NBTConst::NBT_KEY_CUBE_SIZE, $this->cubeSize, true);
+			$this->namedtag->setInt(NBTConst::NBT_KEY_CUBE_SIZE, $this->cubeSize, true);
 		}
 	}
 
