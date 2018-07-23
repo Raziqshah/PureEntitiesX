@@ -22,14 +22,14 @@ namespace revivalpmmp\pureentities\traits;
 
 trait Passive{
 
-    private $friendly = true;
+	private $friendly = true;
 
-    public function isFriendly(): bool{
-        return $this->friendly;
-    }
+	public function isFriendly() : bool{
+		return $this->friendly;
+	}
 
-    public function setFriendly(bool $friendly = true): void{
-        $this->friendly = $friendly;
-    }
+	public function setFriendly(bool $friendly = true) : void{
+		$this->friendly = $friendly;
+	}
 
 }

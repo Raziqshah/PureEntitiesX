@@ -34,21 +34,21 @@ use revivalpmmp\pureentities\utils\MobDamageCalculator;
 
 class PolarBear extends WalkingMonster{
 
-    use Passive;
+	use Passive;
 
 	// Base created from Spider.
 	// TODO: Update Polar Bear specific methods.
 
 	const NETWORK_ID = Data::NETWORK_IDS["polar_bear"];
 
-    public function __construct(Level $level, CompoundTag $nbt){
-        $this->width = Data::WIDTHS[self::NETWORK_ID];
-        $this->height = Data::HEIGHTS[self::NETWORK_ID];
-        $this->speed = 1.13;
+	public function __construct(Level $level, CompoundTag $nbt){
+		$this->width = Data::WIDTHS[self::NETWORK_ID];
+		$this->height = Data::HEIGHTS[self::NETWORK_ID];
+		$this->speed = 1.13;
 
-        $this->setDamage([0, 2, 2, 3]);
-        parent::__construct($level, $nbt);
-    }
+		$this->setDamage([0, 2, 2, 3]);
+		parent::__construct($level, $nbt);
+	}
 
 	public function getName() : string{
 		return "PolarBear";

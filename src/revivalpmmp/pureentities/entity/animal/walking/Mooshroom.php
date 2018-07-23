@@ -40,21 +40,22 @@ class Mooshroom extends WalkingAnimal implements IntfCanBreed, IntfCanInteract, 
 	use Shearable, Breedable, Feedable, Interactive;
 	const NETWORK_ID = Data::NETWORK_IDS["mooshroom"];
 
-    public function __construct(Level $level, CompoundTag $nbt){
-        $this->width = Data::WIDTHS[self::NETWORK_ID];
-        $this->height = Data::HEIGHTS[self::NETWORK_ID];
-        $this->feedableItems = array(Item::WHEAT);
-        $this->breedableClass = new BreedingComponent($this);
-        $this->maxShearDrops = 5;
-        $this->shearItems = Item::RED_MUSHROOM;
-        parent::__construct($level, $nbt);
-    }
-    public function initEntity() : void{
-        parent::initEntity();
-        $this->breedableClass->init();
-    }
+	public function __construct(Level $level, CompoundTag $nbt){
+		$this->width = Data::WIDTHS[self::NETWORK_ID];
+		$this->height = Data::HEIGHTS[self::NETWORK_ID];
+		$this->feedableItems = array(Item::WHEAT);
+		$this->breedableClass = new BreedingComponent($this);
+		$this->maxShearDrops = 5;
+		$this->shearItems = Item::RED_MUSHROOM;
+		parent::__construct($level, $nbt);
+	}
 
-    public function getName() : string{
+	public function initEntity() : void{
+		parent::initEntity();
+		$this->breedableClass->init();
+	}
+
+	public function getName() : string{
 		return "Mooshroom";
 	}
 

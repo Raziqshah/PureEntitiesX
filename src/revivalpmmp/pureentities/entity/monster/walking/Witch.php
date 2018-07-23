@@ -38,13 +38,13 @@ class Witch extends WalkingMonster{
 
 	const NETWORK_ID = Data::NETWORK_IDS["witch"];
 
-    public function __construct(Level $level, CompoundTag $nbt){
-        $this->width = Data::WIDTHS[self::NETWORK_ID];
-        $this->height = Data::HEIGHTS[self::NETWORK_ID];
-        $this->speed = 1.1;
-        $this->setDamage([0, 2, 3, 4]);
-        parent::__construct($level, $nbt);
-    }
+	public function __construct(Level $level, CompoundTag $nbt){
+		$this->width = Data::WIDTHS[self::NETWORK_ID];
+		$this->height = Data::HEIGHTS[self::NETWORK_ID];
+		$this->speed = 1.1;
+		$this->setDamage([0, 2, 3, 4]);
+		parent::__construct($level, $nbt);
+	}
 
 	/**
 	 * Returns the appropriate NetworkID associated with this entity

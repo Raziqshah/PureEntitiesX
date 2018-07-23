@@ -42,22 +42,22 @@ class Pig extends WalkingAnimal implements Rideable, IntfCanBreed, IntfCanIntera
 	const NETWORK_ID = Data::NETWORK_IDS["pig"];
 
 
-    public function __construct(Level $level, CompoundTag $nbt){
-        $this->width = Data::WIDTHS[self::NETWORK_ID];
-        $this->height = Data::HEIGHTS[self::NETWORK_ID];
-        $this->feedableItems = array(
+	public function __construct(Level $level, CompoundTag $nbt){
+		$this->width = Data::WIDTHS[self::NETWORK_ID];
+		$this->height = Data::HEIGHTS[self::NETWORK_ID];
+		$this->feedableItems = array(
 			Item::CARROT,
 			Item::BEETROOT);
-        $this->breedableClass = new BreedingComponent($this);
-        parent::__construct($level, $nbt);
-    }
+		$this->breedableClass = new BreedingComponent($this);
+		parent::__construct($level, $nbt);
+	}
 
-    public function initEntity() : void{
-        parent::initEntity();
-        $this->breedableClass->init();
-    }
+	public function initEntity() : void{
+		parent::initEntity();
+		$this->breedableClass->init();
+	}
 
-    public function getName() : string{
+	public function getName() : string{
 		return "Pig";
 	}
 

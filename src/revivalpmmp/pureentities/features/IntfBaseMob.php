@@ -27,25 +27,25 @@ use revivalpmmp\pureentities\entity\monster\MonsterX;
 
 interface IntfBaseMob{
 
-    /** @param AnimalX|MonsterX */
-    public function baseInit($baseEntity);
+	/** @param AnimalX|MonsterX */
+	public function baseInit($baseEntity);
 
-    /**
-     * Sets the base target for the entity. If this method is called
-     * and the baseTarget is the same, nothing is set
-     *
-     * @param $baseTarget
-     */
-    public function setBaseTarget($baseTarget);
+	/**
+	 * Sets the base target for the entity. If this method is called
+	 * and the baseTarget is the same, nothing is set
+	 *
+	 * @param $baseTarget
+	 */
+	public function setBaseTarget($baseTarget);
 
-    public function getBaseTarget();
+	public function getBaseTarget();
 
-    public function getSpeed() : float;
+	public function getSpeed() : float;
 
-    public function getMaxJumpHeight() : int;
+	public function getMaxJumpHeight() : int;
 
-    public function targetOption(Creature $creature, float $distance) : bool;
+	public function targetOption(Creature $creature, float $distance) : bool;
 
-    public function checkTarget(bool $checkSkip = true);
+	public function checkTarget(bool $checkSkip = true);
 
 }

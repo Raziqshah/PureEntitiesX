@@ -36,7 +36,7 @@ class Endermite extends WalkingMonster{
 	// TODO Update Endermite specifics
 
 
-    public function __construct(Level $level, CompoundTag $nbt){
+	public function __construct(Level $level, CompoundTag $nbt){
 		$this->width = Data::WIDTHS[self::NETWORK_ID];
 		$this->height = Data::HEIGHTS[self::NETWORK_ID];
 		$this->speed = 1.4;

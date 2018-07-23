@@ -39,7 +39,7 @@ interface IntfTameable{
 	public function getOwnerName();
 
 	/** Returns true if player is owner else returns false. */
-	public function isOwner(Player $player): bool;
+	public function isOwner(Player $player) : bool;
 
 	/**
 	 * @return mixed (array)

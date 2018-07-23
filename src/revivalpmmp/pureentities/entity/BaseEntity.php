@@ -102,7 +102,8 @@ abstract class BaseEntity extends Creature{
 		}
 	}
 
-	public function updateMove($tickDiff){}
+	public function updateMove($tickDiff){
+	}
 
 	/**
 	 * Should return the experience dropped by the entity when killed
@@ -527,7 +528,7 @@ abstract class BaseEntity extends Creature{
 		return $this->getBaseTarget() !== null and $this->getBaseTarget() instanceof Player and $this->getBaseTarget()->getId() === $creature->getId();
 	}
 
-    public function checkTarget(bool $checkSkip = true){
+	public function checkTarget(bool $checkSkip = true){
 
-    }
+	}
 }

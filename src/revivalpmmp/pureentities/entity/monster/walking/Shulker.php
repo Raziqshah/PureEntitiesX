@@ -39,14 +39,14 @@ class Shulker extends WalkingMonster{
 
 	const NETWORK_ID = Data::NETWORK_IDS["shulker"];
 
-    public function __construct(Level $level, CompoundTag $nbt){
-        $this->width = Data::WIDTHS[self::NETWORK_ID];
-        $this->height = Data::HEIGHTS[self::NETWORK_ID];
-        $this->speed = 0;
+	public function __construct(Level $level, CompoundTag $nbt){
+		$this->width = Data::WIDTHS[self::NETWORK_ID];
+		$this->height = Data::HEIGHTS[self::NETWORK_ID];
+		$this->speed = 0;
 
-        $this->setDamage([0, 2, 2, 3]);
-        parent::__construct($level, $nbt);
-    }
+		$this->setDamage([0, 2, 2, 3]);
+		parent::__construct($level, $nbt);
+	}
 
 	public function getName() : string{
 		return "Shulker";

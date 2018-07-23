@@ -271,15 +271,15 @@ class EventListener implements Listener{
 		}
 	}
 
-	public function onEntityDamaged(EntityDamageEvent $event): void {
-	    if($event instanceof EntityDamageByEntityEvent){
-	        $entity = $event->getEntity();
-	        if($entity instanceof Player){
-	            $attacker = $event->getDamager();
-	            if($attacker instanceof Creature){
-                    $this->plugin->getServer()->getAsyncPool()->submitTask(new AlertTamedMobs($entity, $attacker));
-                }
-            }
-        }
-    }
+	public function onEntityDamaged(EntityDamageEvent $event) : void{
+		if($event instanceof EntityDamageByEntityEvent){
+			$entity = $event->getEntity();
+			if($entity instanceof Player){
+				$attacker = $event->getDamager();
+				if($attacker instanceof Creature){
+					$this->plugin->getServer()->getAsyncPool()->submitTask(new AlertTamedMobs($entity, $attacker));
+				}
+			}
+		}
+	}
 }

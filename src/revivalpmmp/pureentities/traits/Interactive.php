@@ -24,7 +24,7 @@ use pocketmine\Player;
 
 trait Interactive{
 
-    public function showButton(Player $player){
+	public function showButton(Player $player){
 
-    }
+	}
 }

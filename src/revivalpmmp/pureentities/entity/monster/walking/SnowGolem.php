@@ -49,15 +49,15 @@ class SnowGolem extends WalkingMonster implements ProjectileSource, IntfCanInter
 	use Interactive, Passive, Shearable;
 	const NETWORK_ID = Data::NETWORK_IDS["snow_golem"];
 
-    public function __construct(Level $level, CompoundTag $nbt){
-        $this->width = Data::WIDTHS[self::NETWORK_ID];
-        $this->height = Data::HEIGHTS[self::NETWORK_ID];
+	public function __construct(Level $level, CompoundTag $nbt){
+		$this->width = Data::WIDTHS[self::NETWORK_ID];
+		$this->height = Data::HEIGHTS[self::NETWORK_ID];
 
-        $this->setFriendly(true);
-        $this->setSheared($this->isSheared()); // set data from NBT
-        $this->maxShearDrops = 0;
-        parent::__construct($level, $nbt);
-    }
+		$this->setFriendly(true);
+		$this->setSheared($this->isSheared()); // set data from NBT
+		$this->maxShearDrops = 0;
+		parent::__construct($level, $nbt);
+	}
 
 	public function getName() : string{
 		return "SnowGolem";
@@ -131,11 +131,11 @@ class SnowGolem extends WalkingMonster implements ProjectileSource, IntfCanInter
 	 */
 	public function showButton(Player $player){
 		if($player->getInventory() != null){ // sometimes, we get null on getInventory?! F**k
-            if($player->getInventory()->getItemInHand()->getId() === ItemIds::SHEARS && !$this->isSheared()){
-                InteractionHelper::displayButtonText(PureEntities::BUTTON_TEXT_SHEAR, $player);
-                return;
-            }
-        }
+			if($player->getInventory()->getItemInHand()->getId() === ItemIds::SHEARS && !$this->isSheared()){
+				InteractionHelper::displayButtonText(PureEntities::BUTTON_TEXT_SHEAR, $player);
+				return;
+			}
+		}
 	}
 
 	/**

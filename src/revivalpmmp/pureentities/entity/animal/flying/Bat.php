@@ -31,10 +31,10 @@ class Bat extends FlyingAnimal{
 	const NETWORK_ID = Data::NETWORK_IDS["bat"];
 
 	public function __construct(Level $level, CompoundTag $nbt){
-        parent::__construct($level, $nbt);
-        $this->width = Data::WIDTHS[self::NETWORK_ID];
-        $this->height = Data::HEIGHTS[self::NETWORK_ID];
-    }
+		parent::__construct($level, $nbt);
+		$this->width = Data::WIDTHS[self::NETWORK_ID];
+		$this->height = Data::HEIGHTS[self::NETWORK_ID];
+	}
 
 	public function getSpeed() : float{
 		return $this->speed;

@@ -43,26 +43,26 @@ class Cow extends WalkingAnimal implements IntfCanBreed, IntfCanInteract, IntfCa
 	use Breedable, CanPanic, Feedable, Interactive;
 	const NETWORK_ID = Data::NETWORK_IDS["cow"];
 
-    public function __construct(Level $level, CompoundTag $nbt){
-        $this->width = Data::WIDTHS[self::NETWORK_ID];
-        $this->height = Data::HEIGHTS[self::NETWORK_ID];
-        $this->eyeHeight = 1;
+	public function __construct(Level $level, CompoundTag $nbt){
+		$this->width = Data::WIDTHS[self::NETWORK_ID];
+		$this->height = Data::HEIGHTS[self::NETWORK_ID];
+		$this->eyeHeight = 1;
 
-        $this->feedableItems = array(Item::WHEAT);
+		$this->feedableItems = array(Item::WHEAT);
 
-        $this->breedableClass = new BreedingComponent($this);
+		$this->breedableClass = new BreedingComponent($this);
 
 
-        parent::__construct($level, $nbt);
-    }
+		parent::__construct($level, $nbt);
+	}
 
-    public function initEntity() : void{
-        parent::initEntity();
-        $this->breedableClass->init();
+	public function initEntity() : void{
+		parent::initEntity();
+		$this->breedableClass->init();
 
-    }
+	}
 
-    public function saveNBT() : void{
+	public function saveNBT() : void{
 		if(PluginConfiguration::getInstance()->getEnableNBT()){
 			parent::saveNBT();
 			$this->breedableClass->saveNBT();

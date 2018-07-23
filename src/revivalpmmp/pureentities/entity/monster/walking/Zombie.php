@@ -57,17 +57,17 @@ class Zombie extends WalkingMonster implements IntfCanEquip, IntfCanBreed{
 	private $pickUpLoot = [ItemIds::IRON_SWORD, ItemIds::IRON_SHOVEL];
 
 	public function __construct(Level $level, CompoundTag $nbt){
-        $this->width = Data::WIDTHS[self::NETWORK_ID];
-        $this->height = Data::HEIGHTS[self::NETWORK_ID];
-        $this->speed = 1.1;
-        $this->feedableItems = [];
-        $this->mobEquipment = new MobEquipment($this);
-        $this->breedableClass = new BreedingComponent($this);
-        $this->setDamage([0, 2, 3, 4]);
-        parent::__construct($level, $nbt);
-    }
+		$this->width = Data::WIDTHS[self::NETWORK_ID];
+		$this->height = Data::HEIGHTS[self::NETWORK_ID];
+		$this->speed = 1.1;
+		$this->feedableItems = [];
+		$this->mobEquipment = new MobEquipment($this);
+		$this->breedableClass = new BreedingComponent($this);
+		$this->setDamage([0, 2, 3, 4]);
+		parent::__construct($level, $nbt);
+	}
 
-    public function initEntity() : void{
+	public function initEntity() : void{
 		$this->mobEquipment->init();
 		$this->breedableClass->init();
 		parent::initEntity();

@@ -37,7 +37,7 @@ class Evoker extends WalkingMonster{
 
 	const NETWORK_ID = Data::NETWORK_IDS["evoker"];
 
-    public function __construct(Level $level, CompoundTag $nbt){
+	public function __construct(Level $level, CompoundTag $nbt){
 		$this->width = Data::WIDTHS[self::NETWORK_ID];
 		$this->height = Data::HEIGHTS[self::NETWORK_ID];
 		$this->speed = 1.1;

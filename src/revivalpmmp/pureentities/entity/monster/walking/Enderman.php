@@ -38,7 +38,7 @@ class Enderman extends WalkingMonster{
 
 	const NETWORK_ID = Data::NETWORK_IDS["enderman"];
 
-    public function __construct(Level $level, CompoundTag $nbt){
+	public function __construct(Level $level, CompoundTag $nbt){
 		parent::initEntity();
 		$this->width = Data::WIDTHS[self::NETWORK_ID];
 		$this->height = Data::HEIGHTS[self::NETWORK_ID];

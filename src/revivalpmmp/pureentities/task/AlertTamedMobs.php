@@ -30,27 +30,27 @@ use revivalpmmp\pureentities\traits\BaseMob;
 
 class AlertTamedMobs extends AsyncTask{
 
-    /** @var Player */
-    private $victim;
+	/** @var Player */
+	private $victim;
 
-    /** @var Creature */
-    private $target;
+	/** @var Creature */
+	private $target;
 
-    public function __construct(Player $victim, Creature $attacker){
-        $this->victim = $victim;
-        $this->target = $attacker;
-    }
+	public function __construct(Player $victim, Creature $attacker){
+		$this->victim = $victim;
+		$this->target = $attacker;
+	}
 
-    public function onRun(){
+	public function onRun(){
 
-        if($this->target instanceof Player){
-            // get all tamed entities in the world and search for those belonging to the player
-            foreach($this->target->getLevel()->getEntities() as $entity){
-                if($entity instanceof IntfTameable and $entity->isOwner($this->victim) and !$entity->isSitting()){
-                    /** @var BaseMob $entity */
-                    $entity->setBaseTarget($this->target);
-                }
-            }
-        }
-    }
+		if($this->target instanceof Player){
+			// get all tamed entities in the world and search for those belonging to the player
+			foreach($this->target->getLevel()->getEntities() as $entity){
+				if($entity instanceof IntfTameable and $entity->isOwner($this->victim) and !$entity->isSitting()){
+					/** @var BaseMob $entity */
+					$entity->setBaseTarget($this->target);
+				}
+			}
+		}
+	}
 }

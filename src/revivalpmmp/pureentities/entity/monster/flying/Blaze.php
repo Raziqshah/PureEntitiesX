@@ -45,15 +45,15 @@ use revivalpmmp\pureentities\entity\projectile\SmallFireball;
 class Blaze extends FlyingMonster implements ProjectileSource{
 	const NETWORK_ID = Data::NETWORK_IDS["blaze"];
 
-    public function __construct(Level $level, CompoundTag $nbt){
-        $this->width = Data::WIDTHS[self::NETWORK_ID];
-        $this->height = Data::HEIGHTS[self::NETWORK_ID];
-        $this->gravity = 0.04;
+	public function __construct(Level $level, CompoundTag $nbt){
+		$this->width = Data::WIDTHS[self::NETWORK_ID];
+		$this->height = Data::HEIGHTS[self::NETWORK_ID];
+		$this->gravity = 0.04;
 
-        $this->fireProof = true;
-        $this->setDamage([0, 0, 0, 0]);
-        parent::__construct($level, $nbt);
-    }
+		$this->fireProof = true;
+		$this->setDamage([0, 0, 0, 0]);
+		parent::__construct($level, $nbt);
+	}
 
 	public function getName() : string{
 		return "Blaze";

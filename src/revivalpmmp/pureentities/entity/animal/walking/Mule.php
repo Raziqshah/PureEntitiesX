@@ -33,11 +33,11 @@ class Mule extends WalkingAnimal implements Rideable{
 	const NETWORK_ID = Data::NETWORK_IDS["mule"];
 
 
-    public function __construct(Level $level, CompoundTag $nbt){
-        $this->width = Data::WIDTHS[self::NETWORK_ID];
-        $this->height = Data::HEIGHTS[self::NETWORK_ID];
-        parent::__construct($level, $nbt);
-    }
+	public function __construct(Level $level, CompoundTag $nbt){
+		$this->width = Data::WIDTHS[self::NETWORK_ID];
+		$this->height = Data::HEIGHTS[self::NETWORK_ID];
+		parent::__construct($level, $nbt);
+	}
 
 	public function getName() : string{
 		return "Mule";

@@ -42,20 +42,20 @@ class Rabbit extends WalkingAnimal implements IntfCanBreed, IntfCanInteract, Int
 	const NETWORK_ID = Data::NETWORK_IDS["rabbit"];
 
 	public function __construct(Level $level, CompoundTag $nbt){
-        $this->width = Data::WIDTHS[self::NETWORK_ID];
-        $this->height = Data::HEIGHTS[self::NETWORK_ID];
-        $this->speed = 2;
-        $this->setNormalSpeed(1.1);
-        $this->setPanicSpeed(1.3);
-        $this->feedableItems = array(
-            Item::CARROT,
-            Item::GOLDEN_CARROT,
-            Item::DANDELION);
-        $this->breedableClass = new BreedingComponent($this);
-	    parent::__construct($level, $nbt);
-    }
+		$this->width = Data::WIDTHS[self::NETWORK_ID];
+		$this->height = Data::HEIGHTS[self::NETWORK_ID];
+		$this->speed = 2;
+		$this->setNormalSpeed(1.1);
+		$this->setPanicSpeed(1.3);
+		$this->feedableItems = array(
+			Item::CARROT,
+			Item::GOLDEN_CARROT,
+			Item::DANDELION);
+		$this->breedableClass = new BreedingComponent($this);
+		parent::__construct($level, $nbt);
+	}
 
-    public function initEntity() : void{
+	public function initEntity() : void{
 		parent::initEntity();
 		$this->breedableClass->init();
 	}

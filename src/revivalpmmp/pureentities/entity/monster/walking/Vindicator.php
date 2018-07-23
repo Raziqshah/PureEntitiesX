@@ -49,22 +49,21 @@ class Vindicator extends WalkingMonster implements IntfCanEquip, IntfCanBreed{
 	private $mobEquipment;
 	private $pickUpLoot = [];
 
-    public function __construct(Level $level, CompoundTag $nbt){
-        $this->width = Data::WIDTHS[self::NETWORK_ID];
-        $this->height = Data::HEIGHTS[self::NETWORK_ID];
-        $this->speed = 1.1;
-        $this->setDamage([0, 2, 3, 4]);
+	public function __construct(Level $level, CompoundTag $nbt){
+		$this->width = Data::WIDTHS[self::NETWORK_ID];
+		$this->height = Data::HEIGHTS[self::NETWORK_ID];
+		$this->speed = 1.1;
+		$this->setDamage([0, 2, 3, 4]);
 
-        $this->mobEquipment = new MobEquipment($this);
-        $this->mobEquipment->init();
+		$this->mobEquipment = new MobEquipment($this);
+		$this->mobEquipment->init();
 
-        $this->feedableItems = [];
+		$this->feedableItems = [];
 
-        $this->breedableClass = new BreedingComponent($this);
-        $this->breedableClass->init();
-        parent::__construct($level, $nbt);
-    }
-
+		$this->breedableClass = new BreedingComponent($this);
+		$this->breedableClass->init();
+		parent::__construct($level, $nbt);
+	}
 
 
 	/**

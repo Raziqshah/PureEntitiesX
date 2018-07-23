@@ -33,15 +33,15 @@ class Silverfish extends WalkingMonster{
 	const NETWORK_ID = Data::NETWORK_IDS["silverfish"];
 
 
-    public function __construct(Level $level, CompoundTag $nbt){
-        $this->width = Data::WIDTHS[self::NETWORK_ID];
-        $this->height = Data::HEIGHTS[self::NETWORK_ID];
-        $this->speed = 1.4;
+	public function __construct(Level $level, CompoundTag $nbt){
+		$this->width = Data::WIDTHS[self::NETWORK_ID];
+		$this->height = Data::HEIGHTS[self::NETWORK_ID];
+		$this->speed = 1.4;
 
-        $this->setMaxDamage(1);
-        $this->setDamage([0, 1, 1, 1]);
-        parent::__construct($level, $nbt);
-    }
+		$this->setMaxDamage(1);
+		$this->setDamage([0, 1, 1, 1]);
+		parent::__construct($level, $nbt);
+	}
 
 	public function getName() : string{
 		return "Silverfish";

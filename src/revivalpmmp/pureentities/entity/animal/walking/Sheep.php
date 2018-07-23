@@ -48,7 +48,7 @@ use revivalpmmp\pureentities\traits\Interactive;
 use revivalpmmp\pureentities\traits\Shearable;
 
 class Sheep extends WalkingAnimal implements IntfCanBreed, IntfCanInteract, IntfShearable, IntfCanPanic{
-	use Breedable, CanPanic, Feedable,Interactive, Shearable;
+	use Breedable, CanPanic, Feedable, Interactive, Shearable;
 	const NETWORK_ID = Data::NETWORK_IDS["sheep"];
 
 	const DATA_COLOR_INFO = 16;
@@ -59,29 +59,29 @@ class Sheep extends WalkingAnimal implements IntfCanBreed, IntfCanInteract, Intf
 	 */
 	private $color = Color::WHITE; // default: white
 
-    public function __construct(Level $level, CompoundTag $nbt){
-        $this->width = Data::WIDTHS[self::NETWORK_ID];
-        $this->height = Data::HEIGHTS[self::NETWORK_ID];
-        $this->breedableClass = new BreedingComponent($this);
-        $this->feedableItems = array(Item::WHEAT);
-        $this->maxShearDrops = 3;
-        $this->shearItems = Item::WOOL;
-        $this->setColor($this->getColor());
-        $this->setSheared($this->isSheared());
-        parent::__construct($level, $nbt);
-    }
+	public function __construct(Level $level, CompoundTag $nbt){
+		$this->width = Data::WIDTHS[self::NETWORK_ID];
+		$this->height = Data::HEIGHTS[self::NETWORK_ID];
+		$this->breedableClass = new BreedingComponent($this);
+		$this->feedableItems = array(Item::WHEAT);
+		$this->maxShearDrops = 3;
+		$this->shearItems = Item::WOOL;
+		$this->setColor($this->getColor());
+		$this->setSheared($this->isSheared());
+		parent::__construct($level, $nbt);
+	}
 
-    public function initEntity() : void{
-        parent::initEntity();
-        $this->breedableClass->init();
+	public function initEntity() : void{
+		parent::initEntity();
+		$this->breedableClass->init();
 
-    }
+	}
 
-    public function getName() : string{
+	public function getName() : string{
 		return "Sheep";
 	}
 
-    public static function getRandomColor() : int{
+	public static function getRandomColor() : int{
 		$rand = "";
 		$rand .= str_repeat(Color::WHITE . " ", 818);
 		$rand .= str_repeat(Color::GRAY . " ", 50);

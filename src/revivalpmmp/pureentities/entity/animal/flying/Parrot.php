@@ -40,21 +40,21 @@ class Parrot extends FlyingAnimal implements IntfTameable, IntfCanInteract{
 	const NETWORK_ID = Data::NETWORK_IDS["parrot"];
 	private $birdType; // 0 = red, 1 = blue, 2 = green, 3 = cyan, 4 = silver
 
-    public function __construct(Level $level, CompoundTag $nbt){
-        $this->width = Data::WIDTHS[self::NETWORK_ID];
-        $this->height = Data::HEIGHTS[self::NETWORK_ID];
-        $this->fireProof = false;
-        $this->tameFoods = array(
-            Item::SEEDS,
-            Item::BEETROOT_SEEDS,
-            Item::MELON_SEEDS,
-            Item::PUMPKIN_SEEDS,
-            Item::WHEAT_SEEDS
-        );
-        parent::__construct($level, $nbt);
-    }
+	public function __construct(Level $level, CompoundTag $nbt){
+		$this->width = Data::WIDTHS[self::NETWORK_ID];
+		$this->height = Data::HEIGHTS[self::NETWORK_ID];
+		$this->fireProof = false;
+		$this->tameFoods = array(
+			Item::SEEDS,
+			Item::BEETROOT_SEEDS,
+			Item::MELON_SEEDS,
+			Item::PUMPKIN_SEEDS,
+			Item::WHEAT_SEEDS
+		);
+		parent::__construct($level, $nbt);
+	}
 
-    public function initEntity() : void{
+	public function initEntity() : void{
 		parent::initEntity();
 		if(empty($this->birdType)){
 			$this->setBirdType($this->getRandomBirdType());

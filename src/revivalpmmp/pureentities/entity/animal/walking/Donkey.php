@@ -32,11 +32,11 @@ use revivalpmmp\pureentities\data\Data;
 class Donkey extends WalkingAnimal implements Rideable{
 	const NETWORK_ID = Data::NETWORK_IDS["donkey"];
 
-    public function __construct(Level $level, CompoundTag $nbt){
-        $this->width = Data::WIDTHS[self::NETWORK_ID];
-        $this->height = Data::HEIGHTS[self::NETWORK_ID];
-        parent::__construct($level, $nbt);
-    }
+	public function __construct(Level $level, CompoundTag $nbt){
+		$this->width = Data::WIDTHS[self::NETWORK_ID];
+		$this->height = Data::HEIGHTS[self::NETWORK_ID];
+		parent::__construct($level, $nbt);
+	}
 
 	public function getName() : string{
 		return "Donkey";

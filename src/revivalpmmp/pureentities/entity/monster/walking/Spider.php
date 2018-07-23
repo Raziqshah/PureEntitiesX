@@ -34,18 +34,18 @@ use revivalpmmp\pureentities\utils\MobDamageCalculator;
 
 class Spider extends WalkingMonster{
 
-    use Passive;
+	use Passive;
 
 	const NETWORK_ID = Data::NETWORK_IDS["spider"];
 
-    public function __construct(Level $level, CompoundTag $nbt){
-        $this->width = Data::WIDTHS[self::NETWORK_ID];
-        $this->height = Data::HEIGHTS[self::NETWORK_ID];
-        $this->speed = 1.13;
+	public function __construct(Level $level, CompoundTag $nbt){
+		$this->width = Data::WIDTHS[self::NETWORK_ID];
+		$this->height = Data::HEIGHTS[self::NETWORK_ID];
+		$this->speed = 1.13;
 
-        $this->setDamage([0, 2, 2, 3]);
-        parent::__construct($level, $nbt);
-    }
+		$this->setDamage([0, 2, 2, 3]);
+		parent::__construct($level, $nbt);
+	}
 
 	public function getName() : string{
 		return "Spider";

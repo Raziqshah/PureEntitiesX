@@ -39,20 +39,20 @@ class MagmaCube extends WalkingMonster{
 	private $cubeDimensions = array(0.51, 1.02, 2.04);
 
 
-    public function __construct(Level $level, CompoundTag $nbt){
-        if($this->cubeSize == -1){
-            $this->cubeSize = self::getRandomCubeSize();
-            $this->saveNBT();
-        }
+	public function __construct(Level $level, CompoundTag $nbt){
+		if($this->cubeSize == -1){
+			$this->cubeSize = self::getRandomCubeSize();
+			$this->saveNBT();
+		}
 
-        $this->width = $this->cubeDimensions[$this->cubeSize];
-        $this->height = $this->cubeDimensions[$this->cubeSize];
-        $this->speed = 0.8;
+		$this->width = $this->cubeDimensions[$this->cubeSize];
+		$this->height = $this->cubeDimensions[$this->cubeSize];
+		$this->speed = 0.8;
 
-        $this->fireProof = true;
-        $this->setDamage([0, 3, 4, 6]);
-        parent::__construct($level, $nbt);
-    }
+		$this->fireProof = true;
+		$this->setDamage([0, 3, 4, 6]);
+		parent::__construct($level, $nbt);
+	}
 
 	public function saveNBT() : void{
 		if(PluginConfiguration::getInstance()->getEnableNBT()){

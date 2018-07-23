@@ -79,46 +79,46 @@ class Ocelot extends WalkingAnimal implements IntfTameable, IntfCanBreed, IntfCa
 		return 0.8;
 	}
 
-    public function __construct(Level $level, CompoundTag $nbt){
-        $this->width = Data::WIDTHS[self::NETWORK_ID];
-        $this->height = Data::HEIGHTS[self::NETWORK_ID];
-        $this->speed = 1.2;
-        $this->setNormalSpeed($this->speed);
-        $this->setPanicSpeed(1.4);
+	public function __construct(Level $level, CompoundTag $nbt){
+		$this->width = Data::WIDTHS[self::NETWORK_ID];
+		$this->height = Data::HEIGHTS[self::NETWORK_ID];
+		$this->speed = 1.2;
+		$this->setNormalSpeed($this->speed);
+		$this->setPanicSpeed(1.4);
 
-        $this->fireProof = false;
+		$this->fireProof = false;
 
-        $this->breedableClass = new BreedingComponent($this);
+		$this->breedableClass = new BreedingComponent($this);
 
-        $this->tameFoods = array(
+		$this->tameFoods = array(
 			Item::RAW_FISH,
 			Item::RAW_SALMON
 		);
 
-        $this->feedableItems = array(
+		$this->feedableItems = array(
 			Item::RAW_FISH,
 			Item::RAW_SALMON
 		);
 
-        if($this->isTamed()){
-            $this->mapOwner();
-            if($this->owner === null){
-                PureEntities::logOutput("Ocelot($this): is tamed but player not online. Cannot set tamed owner. Will be set when player logs in ..", PureEntities::NORM);
-            }
-        }
+		if($this->isTamed()){
+			$this->mapOwner();
+			if($this->owner === null){
+				PureEntities::logOutput("Ocelot($this): is tamed but player not online. Cannot set tamed owner. Will be set when player logs in ..", PureEntities::NORM);
+			}
+		}
 
-        $this->teleportDistance = PluginConfiguration::getInstance()->getTamedTeleportBlocks();
-        $this->followDistance = PluginConfiguration::getInstance()->getTamedPlayerMaxDistance();
-        parent::__construct($level, $nbt);
-    }
+		$this->teleportDistance = PluginConfiguration::getInstance()->getTamedTeleportBlocks();
+		$this->followDistance = PluginConfiguration::getInstance()->getTamedPlayerMaxDistance();
+		parent::__construct($level, $nbt);
+	}
 
-    public function initEntity() : void{
-        parent::initEntity();
-        $this->breedableClass->init();
+	public function initEntity() : void{
+		parent::initEntity();
+		$this->breedableClass->init();
 
-    }
+	}
 
-    /**
+	/**
 	 * Returns the appropriate NetworkID associated with this entity
 	 * @return int
 	 */

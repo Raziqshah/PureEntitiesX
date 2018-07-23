@@ -39,17 +39,17 @@ class IronGolem extends WalkingMonster{
 	use Passive;
 
 
-    public function __construct(Level $level, CompoundTag $nbt){
-        $this->width = Data::WIDTHS[self::NETWORK_ID];
-        $this->height = Data::HEIGHTS[self::NETWORK_ID];
-        $this->speed = 0.8;
-        $this->setMaxHealth(20);
-        $this->setHealth(20);
+	public function __construct(Level $level, CompoundTag $nbt){
+		$this->width = Data::WIDTHS[self::NETWORK_ID];
+		$this->height = Data::HEIGHTS[self::NETWORK_ID];
+		$this->speed = 0.8;
+		$this->setMaxHealth(20);
+		$this->setHealth(20);
 
-        $this->setDamage([0, 21, 21, 21]);
-        $this->setMinDamage([0, 7, 7, 7]);
-        parent::__construct($level, $nbt);
-    }
+		$this->setDamage([0, 21, 21, 21]);
+		$this->setMinDamage([0, 7, 7, 7]);
+		parent::__construct($level, $nbt);
+	}
 
 	public function getName() : string{
 		return "IronGolem";

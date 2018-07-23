@@ -42,14 +42,14 @@ class Vex extends FlyingMonster{
 	// TODO create methods specific to Vexes
 	const NETWORK_ID = Data::NETWORK_IDS["vex"];
 
-    public function __construct(Level $level, CompoundTag $nbt){
-        $this->width = Data::WIDTHS[self::NETWORK_ID];
-        $this->height = Data::HEIGHTS[self::NETWORK_ID];
-        $this->gravity = 0.04;
+	public function __construct(Level $level, CompoundTag $nbt){
+		$this->width = Data::WIDTHS[self::NETWORK_ID];
+		$this->height = Data::HEIGHTS[self::NETWORK_ID];
+		$this->gravity = 0.04;
 
-        $this->setDamage([0, 0, 0, 0]);
-        parent::__construct($level, $nbt);
-    }
+		$this->setDamage([0, 0, 0, 0]);
+		parent::__construct($level, $nbt);
+	}
 
 	public function getName() : string{
 		return "Vex";

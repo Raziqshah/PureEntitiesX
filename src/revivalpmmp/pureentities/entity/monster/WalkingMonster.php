@@ -20,6 +20,6 @@
 
 namespace revivalpmmp\pureentities\entity\monster;
 
-abstract class WalkingMonster extends MonsterX {
+abstract class WalkingMonster extends MonsterX{
 
 }

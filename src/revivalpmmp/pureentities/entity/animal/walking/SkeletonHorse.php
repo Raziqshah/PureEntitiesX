@@ -38,10 +38,10 @@ class SkeletonHorse extends WalkingAnimal implements Rideable{
 
 
 	public function __construct(Level $level, CompoundTag $nbt){
-        parent::__construct($level, $nbt);
-        $this->width = Data::WIDTHS[self::NETWORK_ID];
-        $this->height = Data::HEIGHTS[self::NETWORK_ID];
-    }
+		parent::__construct($level, $nbt);
+		$this->width = Data::WIDTHS[self::NETWORK_ID];
+		$this->height = Data::HEIGHTS[self::NETWORK_ID];
+	}
 
 	public function getName() : string{
 		return "SkeletonHorse";

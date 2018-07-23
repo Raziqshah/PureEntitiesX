@@ -29,11 +29,11 @@ class Villager extends WalkingAnimal{
 	const NETWORK_ID = Data::NETWORK_IDS["villager"];
 
 	public function __construct(Level $level, CompoundTag $nbt){
-        $this->width = Data::WIDTHS[self::NETWORK_ID];
-        $this->height = Data::HEIGHTS[self::NETWORK_ID];
-        $this->speed = 1.1;
-        parent::__construct($level, $nbt);
-    }
+		$this->width = Data::WIDTHS[self::NETWORK_ID];
+		$this->height = Data::HEIGHTS[self::NETWORK_ID];
+		$this->speed = 1.1;
+		parent::__construct($level, $nbt);
+	}
 
 	public function getName() : string{
 		return "Villager";

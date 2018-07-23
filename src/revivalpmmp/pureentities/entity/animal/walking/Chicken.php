@@ -48,28 +48,28 @@ class Chicken extends WalkingAnimal implements IntfCanBreed, IntfCanInteract, In
 	private $dropEggTime = 0;
 
 
-    public function __construct(Level $level, CompoundTag $nbt){
-        $this->width = Data::WIDTHS[$this->getNetworkId()];
-        $this->height = Data::HEIGHTS[$this->getNetworkId()];
-        $this->eyeHeight = 0.6;
-        $this->gravity = 0.08;
+	public function __construct(Level $level, CompoundTag $nbt){
+		$this->width = Data::WIDTHS[$this->getNetworkId()];
+		$this->height = Data::HEIGHTS[$this->getNetworkId()];
+		$this->eyeHeight = 0.6;
+		$this->gravity = 0.08;
 
-        $this->breedableClass = new BreedingComponent($this);
+		$this->breedableClass = new BreedingComponent($this);
 
-        $this->feedableItems = array(
+		$this->feedableItems = array(
 			Item::WHEAT_SEEDS,
 			Item::PUMPKIN_SEEDS,
 			Item::MELON_SEEDS,
 			Item::BEETROOT_SEEDS);
-        parent::__construct($level, $nbt);
-    }
+		parent::__construct($level, $nbt);
+	}
 
-    public function initEntity() : void{
-        parent::initEntity();
-        $this->breedableClass->init();
-    }
+	public function initEntity() : void{
+		parent::initEntity();
+		$this->breedableClass->init();
+	}
 
-    public function saveNBT() : void{
+	public function saveNBT() : void{
 		if(PluginConfiguration::getInstance()->getEnableNBT()){
 			parent::saveNBT();
 			$this->breedableClass->saveNBT();
