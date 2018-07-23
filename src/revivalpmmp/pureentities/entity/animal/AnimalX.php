@@ -34,7 +34,6 @@ abstract class AnimalX extends Animal implements IntfBaseMob{
     public function __construct(Level $level, CompoundTag $nbt){
         parent::__construct($level, $nbt);
         if(!$this->isFlaggedForDespawn()){
-            $this->namedtag->setByte("generatedByPEX", 1, true);
             $this->baseInit($this);
         }
     }
