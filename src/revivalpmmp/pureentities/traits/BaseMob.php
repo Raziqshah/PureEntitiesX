@@ -75,7 +75,7 @@ trait BaseMob{
 
 	/** @param AnimalX|MonsterX */
 	public function baseInit($baseEntity){
-		$this->baseEntity->namedtag->setByte("generatedByPEX", 1, true);
+		$this->namedtag->setByte("generatedByPEX", 1, true);
 		$this->baseEntity = $baseEntity;
 		$this->idlingComponent = new IdlingComponent($this->baseEntity);
 		$this->checkTargetSkipTicks = PluginConfiguration::getInstance()->getCheckTargetSkipTicks();
