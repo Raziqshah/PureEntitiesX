@@ -35,38 +35,37 @@ use revivalpmmp\pureentities\utils\MobDamageCalculator;
 class MagmaCube extends WalkingMonster{
 	const NETWORK_ID = Data::NETWORK_IDS["magma_cube"];
 
-	private $cubeSize = -1; // 0 = Tiny, 1 = Small, 2 = Big
-	private $cubeDimensions = array(0.51, 1.02, 2.04);
+	private $cubeSize = -1; // 1 = Tiny, 2 = Small, 4 = Big
 
 
 	public function __construct(Level $level, CompoundTag $nbt){
-		if($this->cubeSize == -1){
-			$this->cubeSize = self::getRandomCubeSize();
-			$this->saveNBT();
-		}
-
-		$this->width = $this->cubeDimensions[$this->cubeSize];
-		$this->height = $this->cubeDimensions[$this->cubeSize];
+		$this->loadNBT($nbt);
+		$this->width = 0.51;
+		$this->height = 0.51;
 		$this->speed = 0.8;
 
 		$this->fireProof = true;
 		$this->setDamage([0, 3, 4, 6]);
 		parent::__construct($level, $nbt);
+		$this->setScale($this->cubeSize);
 	}
 
 	public function saveNBT() : void{
 		if(PluginConfiguration::getInstance()->getEnableNBT()){
 			parent::saveNBT();
-			$this->namedtag->setByte(NBTConst::NBT_KEY_CUBE_SIZE, $this->cubeSize, true);
+			$this->namedtag->setInt(NBTConst::NBT_KEY_CUBE_SIZE, $this->cubeSize, true);
 		}
 	}
 
-	public function loadFromNBT(){
+	public function loadNBT(CompoundTag &$nbt){
 		if(PluginConfiguration::getInstance()->getEnableNBT()){
-			parent::loadNBT();
-			if($this->namedtag->hasTag(NBTConst::NBT_KEY_CUBE_SIZE)){
-				$cubeSize = $this->namedtag->getByte(NBTConst::NBT_KEY_CUBE_SIZE, self::getRandomCubeSize());
+			//parent::loadNBT();
+			if($nbt->hasTag(NBTConst::NBT_KEY_CUBE_SIZE)){
+				$cubeSize = $nbt->getInt(NBTConst::NBT_KEY_CUBE_SIZE, self::getRandomCubeSize());
 				$this->cubeSize = $cubeSize;
+			} else {
+				$this->cubeSize = self::getRandomCubeSize();
+				$nbt->setInt(NBTConst::NBT_KEY_CUBE_SIZE, $this->cubeSize);
 			}
 		}
 	}
@@ -76,7 +75,8 @@ class MagmaCube extends WalkingMonster{
 	}
 
 	public static function getRandomCubeSize() : int{
-		return mt_rand(0, 2);
+		($size = mt_rand(1, 3)) !== 3 ?: $size = 4;
+		return $size;
 	}
 
 	/**
