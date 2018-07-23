@@ -107,11 +107,7 @@ class SnowGolem extends WalkingMonster implements ProjectileSource, IntfCanInter
 	}
 
 	public function getDrops() : array{
-		if($this->isLootDropAllowed()){
 			return [Item::get(Item::SNOWBALL, 0, mt_rand(0, 15))];
-		}else{
-			return [];
-		}
 	}
 
 	public function getMaxHealth() : int{

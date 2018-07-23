@@ -103,7 +103,7 @@ class Slime extends WalkingMonster{
 	}
 
 	public function getDrops() : array{
-		if($this->isLootDropAllowed() and $this->cubeSize == 0){
+		if($this->cubeSize == 0){
 			return [Item::get(Item::SLIMEBALL, 0, mt_rand(0, 2))];
 		}else{
 			return [];

@@ -34,6 +34,7 @@ use revivalpmmp\pureentities\PureEntities;
 
 trait BaseMob{
 
+	private $checkTargetSkipCounter = 0;
 	private $movement = true;
 	private $wallcheck = true;
 
@@ -41,9 +42,12 @@ trait BaseMob{
 	protected $baseEntity;
 	/** @var Vector3|Entity */
 	protected $baseTarget = null;
+	protected $checkTargetSkipTicks = 1; // default: no skip
 	protected $fireProof = false;
+	protected $idling = false;
+	protected $idleCounter;
+	protected $maxAge = 0;
 	protected $moveTime = 0;
-
 	public $stayTime = 0;
 
 	/**
@@ -55,22 +59,14 @@ trait BaseMob{
 	 * @var float $maxJumpHeight
 	 */
 	protected $maxJumpHeight = 1.2;
-	protected $checkTargetSkipTicks = 1; // default: no skip
+
 	public $speed = 1.0;
-
-
-	/**
-	 * @var int
-	 */
-	private $checkTargetSkipCounter = 0;
 
 	/**
 	 * @var IdlingComponent
 	 */
 	protected $idlingComponent;
 
-
-	protected $maxAge = 0;
 
 
 	/** @param AnimalX|MonsterX */
@@ -146,18 +142,6 @@ trait BaseMob{
 			$this->checkTargetSkipCounter++;
 			return false;
 		}
-	}
-
-	/**
-	 * Checks if dropping loot is allowed.
-	 * @return bool true when allowed, false when not
-	 */
-	protected function isLootDropAllowed() : bool{
-		$lastDamageEvent = $this->getLastDamageCause();
-		if($lastDamageEvent !== null and $lastDamageEvent instanceof EntityDamageByEntityEvent){
-			return $lastDamageEvent->getDamager() instanceof Player;
-		}
-		return false;
 	}
 
 	/**

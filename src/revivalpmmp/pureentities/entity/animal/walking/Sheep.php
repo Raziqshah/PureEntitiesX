@@ -110,7 +110,7 @@ class Sheep extends WalkingAnimal implements IntfCanBreed, IntfCanInteract, Intf
 
 	public function getDrops() : array{
 		$drops = [];
-		if($this->isLootDropAllowed() and !$this->isSheared() && !$this->getBreedingComponent()->isBaby()){
+		if(!$this->isSheared() && !$this->getBreedingComponent()->isBaby()){
 			// http://minecraft.gamepedia.com/Sheep - drop 1 wool when not a baby and died
 			array_push($drops, Item::get(Item::WOOL, self::getColor(), 1));
 			if($this->isOnFire()){

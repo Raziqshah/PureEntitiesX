@@ -139,11 +139,7 @@ class Creeper extends WalkingMonster implements Explosive{
 	}
 
 	public function getDrops() : array{
-		if($this->isLootDropAllowed()){
-			return [Item::get(Item::GUNPOWDER, 0, mt_rand(0, 2))];
-		}else{
-			return [];
-		}
+		return [Item::get(Item::GUNPOWDER, 0, mt_rand(0, 2))];
 	}
 
 	public function getMaxHealth() : int{

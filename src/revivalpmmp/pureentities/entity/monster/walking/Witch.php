@@ -113,32 +113,30 @@ class Witch extends WalkingMonster{
 
 	public function getDrops() : array{
 		$drops = [];
-		if($this->isLootDropAllowed()){
-			// 2.5 percent chance of dropping one of these items.
-			if(mt_rand(1, 1000) % 25 == 0){
-				switch(mt_rand(1, 3)){
-					case 1:
-						array_push($drops, Item::get(Item::GLASS_BOTTLE, 0, 1));
-						break;
-					case 2:
-						array_push($drops, Item::get(Item::GLOWSTONE_DUST, 0, 1));
-						break;
-					case 3:
-						array_push($drops, Item::get(Item::GUNPOWDER, 0, 1));
-						break;
-					case 4:
-						array_push($drops, Item::get(Item::REDSTONE, 0, 1));
-						break;
-					case 5:
-						array_push($drops, Item::get(Item::SPIDER_EYE, 0, 1));
-						break;
-					case 6:
-						array_push($drops, Item::get(Item::SUGAR, 0, 1));
-						break;
-					case 7:
-						array_push($drops, Item::get(Item::STICK, 0, 1));
-						break;
-				}
+		// 2.5 percent chance of dropping one of these items.
+		if(mt_rand(1, 1000) % 25 == 0){
+			switch(mt_rand(1, 3)){
+				case 1:
+					array_push($drops, Item::get(Item::GLASS_BOTTLE, 0, 1));
+					break;
+				case 2:
+					array_push($drops, Item::get(Item::GLOWSTONE_DUST, 0, 1));
+					break;
+				case 3:
+					array_push($drops, Item::get(Item::GUNPOWDER, 0, 1));
+					break;
+				case 4:
+					array_push($drops, Item::get(Item::REDSTONE, 0, 1));
+					break;
+				case 5:
+					array_push($drops, Item::get(Item::SPIDER_EYE, 0, 1));
+					break;
+				case 6:
+					array_push($drops, Item::get(Item::SUGAR, 0, 1));
+					break;
+				case 7:
+					array_push($drops, Item::get(Item::STICK, 0, 1));
+					break;
 			}
 		}
 		return $drops;

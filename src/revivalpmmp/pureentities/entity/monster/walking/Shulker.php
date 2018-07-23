@@ -63,12 +63,10 @@ class Shulker extends WalkingMonster{
 
 	public function getDrops() : array{
 		$drops = [];
-		if($this->isLootDropAllowed()){
-			switch(mt_rand(0, 1)){
-				case 0:
-					array_push($drops, Item::get(Item::SHULKER_SHELL, 0, 1));
-					break;
-			}
+		switch(mt_rand(0, 1)){
+			case 0:
+				array_push($drops, Item::get(Item::SHULKER_SHELL, 0, 1));
+				break;
 		}
 		return $drops;
 	}

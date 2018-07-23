@@ -55,11 +55,7 @@ class SkeletonHorse extends WalkingAnimal implements Rideable{
 	}
 
 	public function getDrops() : array{
-		if($this->isLootDropAllowed()){
-			return [Item::get(Item::LEATHER, 0, mt_rand(0, 2))];
-		}else{
-			return [];
-		}
+		return [Item::get(Item::LEATHER, 0, mt_rand(0, 2))];
 	}
 
 	public function getMaxHealth() : int{

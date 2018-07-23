@@ -69,14 +69,10 @@ class Pig extends WalkingAnimal implements Rideable, IntfCanBreed, IntfCanIntera
 	}
 
 	public function getDrops() : array{
-		if($this->isLootDropAllowed()){
-			if($this->isOnFire()){
-				return [Item::get(Item::COOKED_PORKCHOP, 0, mt_rand(1, 3))];
-			}else{
-				return [Item::get(Item::RAW_PORKCHOP, 0, mt_rand(1, 3))];
-			}
+		if($this->isOnFire()){
+			return [Item::get(Item::COOKED_PORKCHOP, 0, mt_rand(1, 3))];
 		}else{
-			return [];
+			return [Item::get(Item::RAW_PORKCHOP, 0, mt_rand(1, 3))];
 		}
 	}
 
