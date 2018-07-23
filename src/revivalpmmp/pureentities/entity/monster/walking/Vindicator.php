@@ -134,8 +134,6 @@ class Vindicator extends WalkingMonster implements IntfCanEquip, IntfCanBreed{
 			$ev = new EntityDamageByEntityEvent($this, $player, EntityDamageEvent::CAUSE_ENTITY_ATTACK,
 				MobDamageCalculator::calculateFinalDamage($player, $damage));
 			$player->attack($ev);
-
-			$this->checkTamedMobsAttack($player);
 		}
 	}
 
