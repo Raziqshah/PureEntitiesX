@@ -179,11 +179,19 @@ class IdlingComponent{
 
 			// 0 degrees is horizontal, -90 is up, 90 is down. but 90 degrees looks very silly - so 60 degrees is
 			// completely ok
-			$pitch = mt_rand(0, 1) ? $pitch + mt_rand(10, 20) : $pitch - mt_rand(10, 20);
-			if($pitch > 60){
-				$pitch = 60;
-			}else if($pitch < -60){
-				$pitch = -60;
+
+			if(abs($pitch) > 30) {
+				$pitch = 0;
+			} else {
+				if(mt_rand(1,1000) % 400 == 0){
+
+					$pitch = mt_rand(0, 1) ? $pitch + mt_rand(10, 20) : $pitch - mt_rand(10, 20);
+					if($pitch > 60){
+						$pitch = 60;
+					}else if($pitch < -60){
+						$pitch = -60;
+					}
+				}
 			}
 
 			$this->baseEntity->setRotation($yaw, $pitch);
@@ -193,7 +201,6 @@ class IdlingComponent{
 			if($this->baseEntity->getMotion()->z != 0){
 				$this->baseEntity->getMotion()->z = 0;
 			}
-			$this->baseEntity->updateMovement();
 		}
 	}
 
