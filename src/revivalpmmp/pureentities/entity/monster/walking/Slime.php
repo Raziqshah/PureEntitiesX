@@ -42,17 +42,16 @@ class Slime extends WalkingMonster{
 
 
 	public function __construct(Level $level, CompoundTag $nbt){
-		parent::__construct($level, $nbt);
 		if($this->cubeSize == -1){
 			$this->cubeSize = self::getRandomSlimeSize();
 			$this->saveNBT();
 		}
-
 		$this->width = $this->cubeDimensions[$this->cubeSize];
 		$this->height = $this->cubeDimensions[$this->cubeSize];
 		$this->speed = 0.8;
 
 		$this->setDamage([0, 2, 2, 3]);
+		parent::__construct($level, $nbt);
 	}
 
 	public function saveNBT() : void{
