@@ -26,6 +26,7 @@ use pocketmine\event\entity\EntityDamageEvent;
 use pocketmine\item\Item;
 use pocketmine\item\ItemIds;
 use pocketmine\level\Level;
+use pocketmine\nbt\tag\CompoundTag;
 use revivalpmmp\pureentities\components\BreedingComponent;
 use revivalpmmp\pureentities\components\MobEquipment;
 use revivalpmmp\pureentities\data\Data;
@@ -55,20 +56,21 @@ class Zombie extends WalkingMonster implements IntfCanEquip, IntfCanBreed{
 	 */
 	private $pickUpLoot = [ItemIds::IRON_SWORD, ItemIds::IRON_SHOVEL];
 
-	public function initEntity() : void{
-		parent::initEntity();
-		$this->width = Data::WIDTHS[self::NETWORK_ID];
-		$this->height = Data::HEIGHTS[self::NETWORK_ID];
-		$this->speed = 1.1;
-		$this->setDamage([0, 2, 3, 4]);
+	public function __construct(Level $level, CompoundTag $nbt){
+        $this->width = Data::WIDTHS[self::NETWORK_ID];
+        $this->height = Data::HEIGHTS[self::NETWORK_ID];
+        $this->speed = 1.1;
+        $this->feedableItems = [];
+        $this->mobEquipment = new MobEquipment($this);
+        $this->breedableClass = new BreedingComponent($this);
+        $this->setDamage([0, 2, 3, 4]);
+        parent::__construct($level, $nbt);
+    }
 
-		$this->mobEquipment = new MobEquipment($this);
+    public function initEntity() : void{
 		$this->mobEquipment->init();
-
-		$this->feedableItems = [];
-
-		$this->breedableClass = new BreedingComponent($this);
 		$this->breedableClass->init();
+		parent::initEntity();
 	}
 
 	/**
