@@ -37,21 +37,19 @@ use revivalpmmp\pureentities\utils\MobDamageCalculator;
 class Slime extends WalkingMonster{
 	const NETWORK_ID = Data::NETWORK_IDS["slime"];
 
-	private $cubeSize = -1; // 0 = Tiny, 1 = Small, 2 = Big
-	private $cubeDimensions = array(0.51, 1.02, 2.04);
+	private $cubeSize = -1; // 1 = Tiny, 2 = Small, 3 = Big
 
 
 	public function __construct(Level $level, CompoundTag $nbt){
-		if($this->cubeSize == -1){
-			$this->cubeSize = self::getRandomSlimeSize();
-			$this->saveNBT();
-		}
-		$this->width = $this->cubeDimensions[$this->cubeSize];
-		$this->height = $this->cubeDimensions[$this->cubeSize];
+		$this->loadNBT($nbt);
+		$level->getServer()->broadcastTitle("Cube Size = $this->cubeSize");
+		$this->width = 0.51;
+		$this->height = 0.51;
 		$this->speed = 0.8;
 
 		$this->setDamage([0, 2, 2, 3]);
 		parent::__construct($level, $nbt);
+		$this->setScale($this->cubeSize);
 	}
 
 	public function saveNBT() : void{
@@ -61,12 +59,15 @@ class Slime extends WalkingMonster{
 		}
 	}
 
-	public function loadNBT(){
+	public function loadNBT(CompoundTag &$nbt){
 		if(PluginConfiguration::getInstance()->getEnableNBT()){
-			parent::loadNBT();
-			if($this->namedtag->hasTag(NBTConst::NBT_KEY_CUBE_SIZE)){
-				$cubeSize = $this->namedtag->getByte(NBTConst::NBT_KEY_CUBE_SIZE, self::getRandomSlimeSize());
+			//parent::loadNBT();
+			if($nbt->hasTag(NBTConst::NBT_KEY_CUBE_SIZE)){
+				$cubeSize = $nbt->getByte(NBTConst::NBT_KEY_CUBE_SIZE, self::getRandomSlimeSize());
 				$this->cubeSize = $cubeSize;
+			} else {
+				$this->cubeSize = self::getRandomSlimeSize();
+				$nbt->setInt(NBTConst::NBT_KEY_CUBE_SIZE, $this->cubeSize);
 			}
 		}
 	}
@@ -76,7 +77,8 @@ class Slime extends WalkingMonster{
 	}
 
 	public static function getRandomSlimeSize() : int{
-		return mt_rand(0, 2);
+		($size = mt_rand(1, 3)) !== 3 ?: $size = 4;
+		return $size;
 	}
 
 	/**
