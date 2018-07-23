@@ -37,7 +37,7 @@ use revivalpmmp\pureentities\utils\MobDamageCalculator;
 class Slime extends WalkingMonster{
 	const NETWORK_ID = Data::NETWORK_IDS["slime"];
 
-	private $cubeSize = -1; // 1 = Tiny, 2 = Small, 3 = Big
+	private $cubeSize = -1; // 1 = Tiny, 2 = Small, 4 = Big
 
 
 	public function __construct(Level $level, CompoundTag $nbt){
