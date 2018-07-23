@@ -42,7 +42,6 @@ class Slime extends WalkingMonster{
 
 	public function __construct(Level $level, CompoundTag $nbt){
 		$this->loadNBT($nbt);
-		$level->getServer()->broadcastTitle("Cube Size = $this->cubeSize");
 		$this->width = 0.51;
 		$this->height = 0.51;
 		$this->speed = 0.8;
