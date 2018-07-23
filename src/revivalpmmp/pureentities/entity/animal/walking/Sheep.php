@@ -60,15 +60,16 @@ class Sheep extends WalkingAnimal implements IntfCanBreed, IntfCanInteract, Intf
 	private $color = Color::WHITE; // default: white
 
 	public function __construct(Level $level, CompoundTag $nbt){
+		$this->loadNBT($nbt);
 		$this->width = Data::WIDTHS[self::NETWORK_ID];
 		$this->height = Data::HEIGHTS[self::NETWORK_ID];
 		$this->breedableClass = new BreedingComponent($this);
 		$this->feedableItems = array(Item::WHEAT);
 		$this->maxShearDrops = 3;
 		$this->shearItems = Item::WOOL;
+		parent::__construct($level, $nbt);
 		$this->setColor($this->getColor());
 		$this->setSheared($this->isSheared());
-		parent::__construct($level, $nbt);
 	}
 
 	public function initEntity() : void{
@@ -134,16 +135,18 @@ class Sheep extends WalkingAnimal implements IntfCanBreed, IntfCanInteract, Intf
 	/**
 	 * loads data from nbt and fills internal variables
 	 */
-	public function loadNBT(){
+	public function loadNBT(CompoundTag &$nbt){
 		if(PluginConfiguration::getInstance()->getEnableNBT()){
-			if($this->namedtag->hasTag(NBTConst::NBT_KEY_SHEARED)){
-				$sheared = $this->namedtag->getByte(NBTConst::NBT_KEY_SHEARED, false, true);
+			if($nbt->hasTag(NBTConst::NBT_KEY_SHEARED)){
+				$sheared = $nbt->getByte(NBTConst::NBT_KEY_SHEARED, false, true);
 				$this->sheared = (bool) $sheared;
 			}
 
-			if($this->namedtag->hasTag(NBTConst::NBT_KEY_COLOR)){
-				$color = $this->namedtag->getByte(NBTConst::NBT_KEY_COLOR, self::getRandomColor());
+			if($nbt->hasTag(NBTConst::NBT_KEY_COLOR)){
+				$color = $nbt->getByte(NBTConst::NBT_KEY_COLOR, self::getRandomColor());
 				$this->color = (int) $color;
+			} else {
+				$this->color = self::getRandomColor();
 			}
 		}
 	}
