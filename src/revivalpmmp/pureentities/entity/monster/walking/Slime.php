@@ -62,7 +62,7 @@ class Slime extends WalkingMonster{
 		if(PluginConfiguration::getInstance()->getEnableNBT()){
 			//parent::loadNBT();
 			if($nbt->hasTag(NBTConst::NBT_KEY_CUBE_SIZE)){
-				$cubeSize = $nbt->getByte(NBTConst::NBT_KEY_CUBE_SIZE, self::getRandomSlimeSize());
+				$cubeSize = $nbt->getInt(NBTConst::NBT_KEY_CUBE_SIZE, self::getRandomSlimeSize());
 				$this->cubeSize = $cubeSize;
 			} else {
 				$this->cubeSize = self::getRandomSlimeSize();
